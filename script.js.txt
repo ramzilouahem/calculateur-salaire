@@ -1,0 +1,26 @@
+function calculateSalary() {
+    const baseSalary = parseFloat(document.getElementById('baseSalary').value);
+    const ptp = parseFloat(document.getElementById('ptp').value);
+    const nuisance = parseFloat(document.getElementById('nuisance').value);
+    const responsibility = parseFloat(document.getElementById('responsibility').value);
+    const itp = parseFloat(document.getElementById('itp').value);
+    const ifsp = parseFloat(document.getElementById('ifsp').value);
+
+    // Calcul du salaire de poste
+    const salaryPoste = baseSalary + ptp + nuisance + responsibility + itp + ifsp;
+
+    // Calcul de la retenue sécurité sociale (9%)
+    const securitySocialDeduction = salaryPoste * 0.09;
+
+    // Calcul de la base imposable IRG
+    const taxableBase = salaryPoste - securitySocialDeduction;
+
+    // Calcul de la masse salariale (35%)
+    const salaryMass = salaryPoste * 0.35;
+
+    // Affichage des résultats
+    document.getElementById('posteSalary').textContent = salaryPoste.toFixed(2);
+    document.getElementById('securitySocialDeduction').textContent = securitySocialDeduction.toFixed(2);
+    document.getElementById('taxableBase').textContent = taxableBase.toFixed(2);
+    document.getElementById('salaryMass').textContent = salaryMass.toFixed(2);
+}
